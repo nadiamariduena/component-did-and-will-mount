@@ -351,3 +351,9 @@ export default CompoexampleOne;
 <br>
 
 [<img src="./src/img/componentwill_and_didMount.jpg">]()
+
+### the video
+
+> https://www.youtube.com/watch?v=kVyrzn29QPk
+
+- last seen : 13:42
