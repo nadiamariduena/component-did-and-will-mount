@@ -1,3 +1,13 @@
+# RECAPITULATING REACT
+
+#### UNDERSTANDING
+
+### COMPONENT WILL MOUNT AND COMPONENT DID MOUNT 🚧
+
+<br>
+
+- IN THE FOLLOWING EXAMPLE YOU CAN SEE THE LOGIC on it
+
 ```javascript
 import React, { Component } from "react";
 // dont forget this damn thing
@@ -11,7 +21,7 @@ class CompoexampleOne extends Component {
     console.log("Executed AFTER the component is mounted");
   }
 
-  // 
+  //
   //
   //
   //
@@ -23,9 +33,9 @@ class CompoexampleOne extends Component {
 export default CompoexampleOne;
 ```
 
- #### IF YOU NOTICE 
+#### IF YOU NOTICE
 
- - The  componentWillMount() will be executed BEFORE 
+- The componentWillMount() will be executed BEFORE
 
 <br>
 
