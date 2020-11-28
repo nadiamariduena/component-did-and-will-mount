@@ -23,6 +23,16 @@ class ConstructorSetState extends Component {
     console.log("hello componentDidMount");
   }
   // ---------------
+
+  changeState() {
+    this.setState({ name: "jill" });
+  }
+
+  /*
+  
+  
+  
+  */
   render() {
     return (
       <div className="const_state">
@@ -30,6 +40,7 @@ class ConstructorSetState extends Component {
         {this.state.name}
         {this.state.innerWidth}
         <Child name={this.state.name} />
+        <button onClick={this.changeState.bind(this)}>Change State</button>
       </div>
     );
   }

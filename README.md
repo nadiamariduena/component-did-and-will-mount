@@ -219,9 +219,99 @@ export default App;
 
 <br>
 <br>
+
+## NOW LETS TEST IT ON A BUTTON
+
+#### HERE we are going to add a button that when the user will click, it will change the "name" from John to Jill but since the this. is connected now to the Child.js the "name" also will change there...
+
+- START BY ADDING THE FOLLOWING TO THE HTML
+
+```javascript
+// ConstructorState.js
+<button onClick={this.changeState}>Change State</button>
+```
+
+- THEN CREATE THE EVENT THAT WILL BE CONNECTED TO THE BUTTON
+
+```javascript
+// ConstructorState.js
+  changeState() {
+    this.setState({ name: "jill" });
+  }
+```
+
+# Bind
+
+- NOW WE WILL NEED TO BIND or connect this click event button to the all the files that have the this. and the name
+
+```javascript
+// ConstructorState.js
+<button onClick={this.changeState.bind(this)}>Change State</button>
+```
+
+### SO if I understand the "this." carry the information across the files
+
+- THE CODE
+
+```javascript
+// ConstructorState.js
+//
+class ConstructorSetState extends Component {
+  constructor() {
+    super();
+    // this runs Before
+    this.state = {
+      name: "John",
+    };
+    console.log("hello constructor");
+  }
+  // ------
+  // this runs AFTER
+  componentWillMount() {
+    if (window.innerWidth < 500) {
+      this.setState({ innerWidth: window.innerWidth });
+      console.log("hello width componentWillMount()");
+    }
+  }
+  componentDidMount() {
+    console.log("hello componentDidMount");
+  }
+  // ---------------
+
+  changeState() {
+    this.setState({ name: "jill" });
+  }
+
+  /*
+  
+  
+  
+  */
+  render() {
+    return (
+      <div className="const_state">
+        {/* you add it here so to be shown on the browser, not on the consoles */}
+        {this.state.name}
+        {this.state.innerWidth}
+        <Child name={this.state.name} />
+        <button onClick={this.changeState.bind(this)}>Change State</button>
+      </div>
+    );
+  }
+}
+
+export default ConstructorSetState;
+```
+
+[<img src="./src/img/cdmount_cwmount_button-state.gif">]()
+
+<br>
+<br>
 <hr>
 <br>
 <br>
+
+## From another tutorial 🌻
 
 ### 3 COMPONENT WILL MOUNT AND COMPONENT DID MOUNT 🚧
 
