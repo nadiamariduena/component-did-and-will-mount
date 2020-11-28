@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-
+import Child from "./Child";
+//
+//
 class ConstructorSetState extends Component {
-  state = {
-    name: "peter",
-  };
-
   constructor() {
     super();
     // this runs Before
@@ -16,7 +14,13 @@ class ConstructorSetState extends Component {
   // ------
   // this runs AFTER
   componentWillMount() {
-    console.log("hello Will Mount");
+    if (window.innerWidth < 500) {
+      this.setState({ innerWidth: window.innerWidth });
+      console.log("hello width componentWillMount()");
+    }
+  }
+  componentDidMount() {
+    console.log("hello componentDidMount");
   }
   // ---------------
   render() {
@@ -24,6 +28,8 @@ class ConstructorSetState extends Component {
       <div className="const_state">
         {/* you add it here so to be shown on the browser, not on the consoles */}
         {this.state.name}
+        {this.state.innerWidth}
+        <Child name={this.state.name} />
       </div>
     );
   }

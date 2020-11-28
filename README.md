@@ -81,6 +81,142 @@ export default ConstructorSetState;
 
 #### With the "componentWillMount" you can change the state, so SET STATE , BUT WHY WOULD YOU LIKE TO CHANGE THE STATE, why would you like to SETSTATE ? even after setting up the original state inside the constructor
 
+##### the reason
+
+- SOMETIMES BASED on the PROPS , you would like to change the state, and this would be an IDEAL way to do it because the COMPONENT has a MID RENDER, so if i change the state right now, the component are not going to RE-RENDER themselves, because it hasn render , because you go to the first initial state.
+
+<br>
+
+- ALSO componentWillMount onöy runs ONCE , AND THAT IS DURING THE INITAL RENDER.
+
+- So what else can you do it ? so if you want to do soemthing with the GLOBAL EVENTS, LIKE a window or a DOCUMENT, YOU CAN SET IT HERE inside the componentWillMount.
+
+##### In the following example, we will change the state of something, WE WILL SHOW THE WIDTH of the document when it will CHANGE the size of the window, for example like when we decrease the window while inspecting it.
+
+```javascript
+class ConstructorSetState extends Component {
+  constructor() {
+    super();
+    // this runs Before
+    this.state = {
+      name: "John",
+    };
+    console.log("hello constructor");
+  }
+  // --------------
+  //
+  componentWillMount() {
+    if (window.innerWidth < 500) {
+      this.setState({ innerWidth: window.innerWidth });
+    }
+  }
+  // ---------------
+  render() {
+    return (
+      <div className="const_state">
+        {/* you add it here so to be shown on the browser, not on the consoles */}
+        {this.state.name}
+        {this.state.innerWidth}
+      </div>
+    );
+  }
+}
+
+export default ConstructorSetState;
+```
+
+<br>
+
+- IF YOU NOTICE, the innerwidth is going to show only once, after that you wont see it, you will have to refresh the page to see it again.
+
+<br>
+
+[<img src="./src/img/constructor_componentWillMount.gif">](s)
+
+#### NOW LETS USE THE COMPONENTWILLMOUNT and the COMPONENTDIDMOUNT plus PROPS 🚧
+
+- create a new file , so to see how the componentwill and did mount will work
+
+- create the child.js
+
+- copy everything from the App.js
+
+- paste it inside the child.js
+
+- import the child.js to the App.js
+
+```javascript
+// Child.js
+import React, { Component } from "react";
+import Child from "./Child";
+//
+//
+class ConstructorSetState extends Component {
+  constructor() {
+    super();
+    // this runs Before
+    this.state = {
+      name: "John",
+    };
+    console.log("hello constructor");
+  }
+  // ------
+  // this runs AFTER
+  componentWillMount() {
+    if (window.innerWidth < 500) {
+      this.setState({ innerWidth: window.innerWidth });
+      console.log("hello width componentWillMount()");
+    }
+  }
+  componentDidMount() {
+    console.log("hello componentDidMount");
+  }
+  // ---------------
+  render() {
+    return (
+      <div className="const_state">
+        {/* you add it here so to be shown on the browser, not on the consoles */}
+        {this.state.name}
+        {this.state.innerWidth}
+        <Child name={this.state.name} />
+      </div>
+    );
+  }
+}
+
+export default ConstructorSetState;
+//
+//
+// App.js
+import React, { Component } from "react";
+// import CompoexampleOne from "./components/componentdimontOne";
+import ConstructorSetState from "./components/ConstructorState";
+
+//
+//
+//
+
+class App extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        {/* <CompoexampleOne /> */}
+
+        <ConstructorSetState />
+      </React.Fragment>
+    );
+  }
+}
+
+export default App;
+```
+
+[<img src="./src/img/comp_did_mount_hierarchy.jpg">]()
+
+#### NOTICE that the component did mount of the "constructorstate.js" runned after the Child.js data and the child.js component did mount inself
+
+- SO WITH THIS YOU HAVE A PREVIEW OF THE HIERARCHY
+
 <br>
 <br>
 <hr>

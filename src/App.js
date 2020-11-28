@@ -1,12 +1,17 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 // import CompoexampleOne from "./components/componentdimontOne";
-import ConstructorSetState from "./components/Constructor_state";
+import ConstructorSetState from "./components/ConstructorState";
+
+// 
+// 
+// 
 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
         {/* <CompoexampleOne /> */}
+
         <ConstructorSetState />
       </React.Fragment>
     );
